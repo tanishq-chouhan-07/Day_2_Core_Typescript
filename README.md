@@ -89,3 +89,32 @@ But we use the Typescript to Prevent the Future Typebased Errors and make the Ap
         - Construct Signatures
         - Generic Functions
         
+- ### Classes 
+
+        - Cross-hierarchy protected access
+                TypeScript doesn’t allow accessing protected  members of a sibling class in a class hierarchy:
+                 
+                ```
+                class Base {
+                        protected x: number = 1;
+                                }
+                class Derived1 extends Base {
+                        protected x: number = 5;
+                }
+                class Derived2 extends Base {
+                        f1(other: Derived2) {
+                                other.x = 10;           
+                        }
+                        f2(other: Derived1) {
+                                other.x = 10;
+                        Property 'x' is protected and only accessible within class 'Derived1' and its subclasses.
+                }
+                }
+                ```
+
+        - Static members can also use the same public, protected, and private visibility modifier
+
+        - TypeScript (and JavaScript) don’t have a construct called static class the same way as, for example, C# does. 
+                Those constructs only exist because those languages force all data and functions to be inside a class; because that restriction doesn’t exist in TypeScript, there’s no need for them. A class with only a single instance is typically just represented as a normal object in JavaScript/TypeScript.   
+
+        - 
